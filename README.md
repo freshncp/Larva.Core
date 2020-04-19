@@ -68,6 +68,8 @@ MemoryConfigurationManager.Instance.SetSection(section1);
 用于依赖注入。
 
 ```csharp
+using Larva.Core.Ioc;
+
 Larva.Core.ModuleManager.Instance.UseIoc(<custom>);
 ```
 
@@ -76,6 +78,8 @@ Larva.Core.ModuleManager.Instance.UseIoc(<custom>);
 已内置ConsoleLog、FileLog。
 
 ```csharp
+using Larva.Core.Logging;
+
 Larva.Core.ModuleManager.Instance.UseLogging(<custom>);
 ```
 
@@ -86,6 +90,8 @@ Larva.Core.ModuleManager.Instance.UseLogging(<custom>);
 内置的日志格式：日期+时间+日志级别+日志来源类型名+日志内容+异常消息+异常堆栈。
 
 ```csharp
+using Larva.Core.Logging;
+
 Larva.Core.ModuleManager.Instance.UseConsoleLog();
 ```
 
@@ -96,6 +102,8 @@ Larva.Core.ModuleManager.Instance.UseConsoleLog();
 内置的日志格式：日期+时间+日志级别+日志来源类型名+日志内容+异常消息+异常堆栈。
 
 ```csharp
+using Larva.Core.Logging;
+
 Larva.Core.ModuleManager.Instance.UseFileLog();
 ```
 
@@ -109,10 +117,43 @@ Larva.Core.ModuleManager.Instance.UseFileLog();
 
 二进制序列号模块，内置BinaryFormatter的封装。
 
+```csharp
+using Larva.Core.Serialization.Binary;
+
+Larva.Core.ModuleManager.Instance.UseBinarySerialization(<custom>);
+```
+
+#### BinaryFormatter
+
+```csharp
+using Larva.Core.Serialization.Binary;
+
+Larva.Core.ModuleManager.Instance.UseBinaryFormatter(<custom>);
+var text1 = "This is a text.";
+var buffer = BinarySerializer.Instance.Serialize(text1);
+var text2 = BinarySerializer.Instance.Deserialize(typeof(string), buffer);
+ 
+
+```
+
+
 ### Serialization.Json 模块
 
 Json序列号模块。
 
+```csharp
+using Larva.Core.Serialization.Json;
+
+Larva.Core.ModuleManager.Instance.UseJsonSerialization(<custom>);
+```
+
+
 ### Serialization.Xml 模块
 
 Xml序列号模块。
+
+```csharp
+using Larva.Core.Serialization.Xml;
+
+Larva.Core.ModuleManager.Instance.UseXmlSerialization(<custom>);
+```
