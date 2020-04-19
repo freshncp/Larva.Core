@@ -142,7 +142,7 @@ Larva.Core.ModuleManager.Instance.UseConsoleLog();
 ```csharp
 using Larva.Core.Logging;
 
-Larva.Core.ModuleManager.Instance.UseFileLog();
+Larva.Core.ModuleManager.Instance.UseFileLog(<logPath>);
 ```
 
 - 日志目录可定义，默认所在目录：`<AppDomain.BaseDirectory>`/logs/
