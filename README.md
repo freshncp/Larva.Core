@@ -128,7 +128,7 @@ Larva.Core.ModuleManager.Instance.UseFileLog();
 
 ### Larva.Core.Serialization.Binary 模块
 
-二进制序列号模块，内置BinaryFormatter的封装。
+二进制序列化模块，内置BinaryFormatter的封装。
 
 ```csharp
 using Larva.Core.Serialization.Binary;
@@ -149,7 +149,7 @@ var text2 = BinarySerializationProxy.Instance.Deserialize(typeof(string), buffer
 
 ### Larva.Core.Serialization.Json 模块
 
-Json序列号模块。
+Json序列化模块。
 
 ```csharp
 using Larva.Core.Serialization.Json;
@@ -160,7 +160,7 @@ Larva.Core.ModuleManager.Instance.UseJsonSerialization(<custom>);
 
 ### Larva.Core.Serialization.Xml 模块
 
-Xml序列号模块。
+Xml序列化模块。
 
 ```csharp
 using Larva.Core.Serialization.Xml;

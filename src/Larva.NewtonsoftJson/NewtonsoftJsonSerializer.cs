@@ -4,7 +4,7 @@ using Larva.Core.Serialization.Json;
 namespace Larva.NewtonsoftJson
 {
     /// <summary>
-    /// Newtonsoft.Json 序列号
+    /// Newtonsoft.Json Serializer
     /// </summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {

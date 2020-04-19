@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace Larva.Core.Serialization.Binary.BinaryFormatterSerialization
 {
     /// <summary>
-    /// 微软二进制序列号器
+    /// BinaryFormatter Serializer
     /// </summary>
     public class BinaryFormatterSerializer : IBinarySerializer
     {
@@ -18,7 +18,7 @@ namespace Larva.Core.Serialization.Binary.BinaryFormatterSerialization
         public string ContentType => _contentType;
 
         /// <summary>
-        /// 序列号
+        /// 序列化
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
