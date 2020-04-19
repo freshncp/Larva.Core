@@ -12,17 +12,17 @@
 
 已定义的抽象模块：
 
-- Larva.Core.Configuration.ConfigurationModule
+- Larva.Core.Configuration
 
-- Larva.Core.Ioc.IocModule
+- Larva.Core.Ioc
 
-- Larva.Core.Logging.LoggingModule
+- Larva.Core.Logging
 
-- Larva.Core.Serialization.Binary.BinarySerializationModule
+- Larva.Core.Serialization.Binary
 
-- Larva.Core.Serialization.Json.JsonSerializationModule
+- Larva.Core.Serialization.Json
 
-- Larva.Core.Serialization.Xml.XmlSerializationModule
+- Larva.Core.Serialization.Xml
 
 已实现的模块：
 
@@ -35,7 +35,7 @@
 
 ## 抽象模块介绍
 
-### Configuration 模块
+### Larva.Core.Configuration 模块
 
 应用配置配置，有配置块概念，配置块内部有独立配置列表，配置块之间是扁平关系。
 
@@ -76,7 +76,7 @@ section1.Set("key2", 1);
 MemoryConfigurationManager.Instance.SetSection(section1);
 ```
 
-### Ioc 模块
+### Larva.Core.Ioc 模块
 
 用于依赖注入。
 
@@ -86,7 +86,7 @@ using Larva.Core.Ioc;
 Larva.Core.ModuleManager.Instance.UseIoc(<custom>);
 ```
 
-### Logging 模块
+### Larva.Core.Logging 模块
 
 已内置ConsoleLog、FileLog。
 
@@ -126,7 +126,7 @@ Larva.Core.ModuleManager.Instance.UseFileLog();
 
 - 按日期自动切换新日志文件
 
-### Serialization.Binary 模块
+### Larva.Core.Serialization.Binary 模块
 
 二进制序列号模块，内置BinaryFormatter的封装。
 
@@ -147,7 +147,7 @@ var buffer = BinarySerializationProxy.Instance.Serialize(text1);
 var text2 = BinarySerializationProxy.Instance.Deserialize(typeof(string), buffer); 
 ```
 
-### Serialization.Json 模块
+### Larva.Core.Serialization.Json 模块
 
 Json序列号模块。
 
@@ -158,7 +158,7 @@ Larva.Core.ModuleManager.Instance.UseJsonSerialization(<custom>);
 ```
 
 
-### Serialization.Xml 模块
+### Larva.Core.Serialization.Xml 模块
 
 Xml序列号模块。
 
