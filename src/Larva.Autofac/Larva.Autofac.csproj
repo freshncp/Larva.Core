@@ -10,7 +10,8 @@
     <PackageTags>ioc autofac larva.core</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Authors>Jerry Bai</Authors>
-    <PackageProjectUrl>https://github.com/freshncp/Larva.Autofac</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/freshncp/Larva.Core</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 

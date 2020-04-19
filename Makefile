@@ -9,7 +9,6 @@ pack:
 	mv `pwd`/src/Larva.Log4Net/bin/Release/*.nupkg `pwd`/packages/
 
 test: clear test-core test-autofac test-log4net
-	dotnet test `pwd`/src/Larva.Core.Tests/
 
 test-core:
 	dotnet test `pwd`/src/Larva.Core.Tests/

@@ -12,6 +12,7 @@
     <Authors>Jerry Bai</Authors>
     <PackageProjectUrl>https://github.com/freshncp/Larva.Core</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   
 </Project>

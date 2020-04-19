@@ -10,7 +10,8 @@
     <PackageTags>logging log4net</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Authors>Jerry Bai</Authors>
-    <PackageProjectUrl>https://github.com/freshncp/Larva.Log4Net</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/freshncp/Larva.Core</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
   </PropertyGroup>
