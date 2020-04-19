@@ -24,7 +24,16 @@
 
 - Larva.Core.Serialization.Xml.XmlSerializationModule
 
-## 模块介绍
+已实现的模块：
+
+- Larva.Autofac
+
+- Larva.Log4Net
+
+- Larva.NewtonsoftJson
+
+
+## 抽象模块介绍
 
 ### Configuration 模块
 
