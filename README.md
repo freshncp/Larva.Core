@@ -6,7 +6,7 @@
 
 核心模块接口：IModuleManager，通过对此接口添加扩展类，实现模块开发。
 
-每个抽象模块，包含抽象接口、模块扩展类；每个具体模块，包含模块扩展类；模块扩展类，额外定义模块名、模块实例。
+每个抽象模块，包含抽象接口、模块扩展类；每个实现模块，包含模块扩展类；模块扩展类，额外定义模块名、模块实例。
 
 已定义的抽象模块：
 
@@ -82,6 +82,33 @@ MemoryConfigurationManager.Instance.SetSection(section1);
 using Larva.Core.Ioc;
 
 Larva.Core.ModuleManager.Instance.UseIoc(<custom>);
+
+// 按程序集注册
+IocModule.RegisterByAssembly(<assembly>);
+// 注册完后，需要执行构建。
+IocModule.Instance.Build();
+
+// 解析，支持通过构造函数进行注入
+var userRepository = IocModule.Instance.Resolve<IUserRepository>();
+
+// 支持注册服务实例时替换
+IocModule.Instance.OnServiceInstanceRegistering += (sender, e) =>
+{
+    if (e.ServiceName == "sms" && e.ServiceType == typeof(INoticeService))
+    {
+        e.SetNewInstance(new EmailNoticeService());
+    }
+};
+
+// 支持注册服务类型时替换
+IocModule.Instance.OnServiceTypeRegistering += (sender, e) =>
+{
+    if (e.ServiceName == "sms" && e.ServiceType == typeof(INoticeService))
+    {
+        e.SetNewImplementationType(typeof(EmailNoticeService));
+    }
+};
+ 
 ```
 
 ### Larva.Core.Logging 模块
@@ -164,4 +191,40 @@ Xml序列化模块。
 using Larva.Core.Serialization.Xml;
 
 Larva.Core.ModuleManager.Instance.UseXmlSerialization(<custom>);
+```
+
+## 实现模块介绍
+
+### Larva.Autofac 模块
+
+Autofac 适配器。
+
+```csharp
+using Larva.Autofac;
+using Larva.Core.Ioc;
+
+Larva.Core.ModuleManager.Instance.UseAutofac();
+```
+
+
+### Larva.Log4Net 模块
+
+Log4Net 适配器。
+
+```csharp
+using Larva.Log4Net;
+using Larva.Core.Logging;
+
+Larva.Core.ModuleManager.Instance.UseLog4Net("log4net.config");
+```
+
+### Larva.NewtonsoftJson 模块
+
+NewtonsoftJson 适配器。
+
+```csharp
+using Larva.NewtonsoftJson;
+using Larva.Core.Serialization.Json;
+
+Larva.Core.ModuleManager.Instance.UseNewtonsoftJson();
 ```
