@@ -10,8 +10,8 @@ namespace Larva.Core.Tests
         {
             ModuleManager.Instance.UseBinaryFormatter(true);
             var text1 = "This is a text.";
-            var buffer = BinarySerializer.Instance.Serialize(text1);
-            var text2 = BinarySerializer.Instance.Deserialize(typeof(string), buffer);
+            var buffer = BinarySerializationProxy.Instance.Serialize(text1);
+            var text2 = BinarySerializationProxy.Instance.Deserialize(typeof(string), buffer);
             Assert.Equal(text1, text2);
         }
     }

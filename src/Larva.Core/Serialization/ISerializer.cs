@@ -3,7 +3,7 @@ using System;
 namespace Larva.Core.Serialization
 {
     /// <summary>
-    /// 序列号接口
+    /// 序列化接口
     /// </summary>
     public interface ISerializer
     {
@@ -13,7 +13,7 @@ namespace Larva.Core.Serialization
         string ContentType { get; }
 
         /// <summary>
-        /// 序列号
+        /// 序列化
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -23,8 +23,8 @@ namespace Larva.Core.Serialization
         /// 反序列化
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="data"></param>
+        /// <param name="buffer"></param>
         /// <returns></returns>
-        object Deserialize(Type type, byte[] data);
+        object Deserialize(Type type, byte[] buffer);
     }
 }

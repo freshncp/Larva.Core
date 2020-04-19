@@ -9,6 +9,11 @@ namespace Larva.Log4Net
     public static class Log4NetModule
     {
         /// <summary>
+        /// 模块名
+        /// </summary>
+        public const string MODULE_NAME = "Larva.Log4Net";
+
+        /// <summary>
         /// 使用Log4Net
         /// </summary>
         /// <param name="manager">模块管理器</param>
@@ -17,7 +22,9 @@ namespace Larva.Log4Net
         /// <returns></returns>
         public static IModuleManager UseLog4Net(this IModuleManager manager, string configFilePath = "", bool canOverride = false)
         {
-            return manager.UseLogging(new Log4NetLoggerFactory(configFilePath), canOverride);
+            var moduleInstance = new Log4NetLoggerFactory(configFilePath);
+            manager.Register(MODULE_NAME, moduleInstance, canOverride);
+            return manager.UseLogging(moduleInstance, canOverride);
         }
     }
 }

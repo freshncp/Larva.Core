@@ -8,10 +8,10 @@ namespace Larva.Log4Net.Tests
     public class Log4NetTests
     {
         [Fact]
-        public void Test1()
+        public void TestLog()
         {
             ModuleManager.Instance.UseLog4Net(canOverride: true);
-            var logger = LoggerFactory.GetLogger(typeof(Log4NetTests));
+            var logger = LoggingProxy.Instance.GetLogger(typeof(Log4NetTests));
             logger.Trace("just message");
             logger.Debug("just message");
             logger.Info("just message");

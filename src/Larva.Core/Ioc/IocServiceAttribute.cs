@@ -18,6 +18,12 @@ namespace Larva.Core.Ioc
         }
 
         /// <summary>
+        /// 服务名
+        /// </summary>
+        /// <value></value>
+        public string ServiceName { get; set; }
+
+        /// <summary>
         /// 生命期范围
         /// </summary>
         public LifetimeScope Scope { get; set; }

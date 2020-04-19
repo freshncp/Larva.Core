@@ -22,12 +22,12 @@ namespace Larva.Autofac
         }
 
         /// <summary>
-        /// Autofac.IContainer（用于和其他组建间扩展）
+        /// Autofac.IContainer（用于和其他组件间扩展）
         /// </summary>
         public AutofacIContainer Container { get; private set; }
 
         /// <summary>
-        /// Autofac.ContainerBuilder（用于和其他组建间扩展）
+        /// Autofac.ContainerBuilder（用于和其他组件间扩展）
         /// </summary>
         public ContainerBuilder Builder { get; private set; }
 

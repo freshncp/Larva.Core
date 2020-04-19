@@ -1,7 +1,7 @@
 namespace Larva.Core.Serialization.Xml
 {
     /// <summary>
-    /// XML序列号接口
+    /// XML序列化接口
     /// </summary>
     public interface IXmlSerializer : ISerializer
     {

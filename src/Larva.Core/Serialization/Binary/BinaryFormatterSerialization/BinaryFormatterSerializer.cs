@@ -15,7 +15,7 @@ namespace Larva.Core.Serialization.Binary.BinaryFormatterSerialization
         /// <summary>
         /// 内容类型：MIME
         /// </summary>
-        public string ContentType { get { return _contentType; } }
+        public string ContentType => _contentType;
 
         /// <summary>
         /// 序列号

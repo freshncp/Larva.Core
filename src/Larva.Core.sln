@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Log4Net.Tests", "Larv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Autofac.Tests", "Larva.Autofac.Tests\Larva.Autofac.Tests.csproj", "{524F511F-31E9-422E-8491-5F7CC63F2B94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.NewtonsoftJson", "Larva.NewtonsoftJson\Larva.NewtonsoftJson.csproj", "{855C45AC-C37C-451E-B408-5708EE56D2DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.NewtonsoftJson.Tests", "Larva.NewtonsoftJson.Tests\Larva.NewtonsoftJson.Tests.csproj", "{177DA186-24E5-4307-AD78-A600DAF17E4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +47,13 @@ Global
 		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{855C45AC-C37C-451E-B408-5708EE56D2DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{855C45AC-C37C-451E-B408-5708EE56D2DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{855C45AC-C37C-451E-B408-5708EE56D2DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{855C45AC-C37C-451E-B408-5708EE56D2DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177DA186-24E5-4307-AD78-A600DAF17E4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177DA186-24E5-4307-AD78-A600DAF17E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177DA186-24E5-4307-AD78-A600DAF17E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177DA186-24E5-4307-AD78-A600DAF17E4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

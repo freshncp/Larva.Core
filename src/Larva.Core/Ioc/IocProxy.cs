@@ -4,12 +4,11 @@ using System.Reflection;
 namespace Larva.Core.Ioc
 {
     /// <summary>
-    /// IoC容器
+    /// IoC Proxy
     /// </summary>
-    public sealed class IocContainer
+    [Larva.Core.Ioc.IocService]
+    public sealed class IocProxy : IModuleProxy<IContainer>
     {
-        private IocContainer() { }
-
         /// <summary>
         /// 获取实例
         /// </summary>
@@ -19,6 +18,11 @@ namespace Larva.Core.Ioc
             {
                 return ModuleManager.Instance.GetIocContainer();
             }
+        }
+
+        ModuleInstance<IContainer> IModuleProxy<IContainer>.GetModule()
+        {
+            return new ModuleInstance<IContainer>(IocModule.MODULE_NAME, Instance);
         }
 
         /// <summary>
@@ -56,7 +60,7 @@ namespace Larva.Core.Ioc
                     }
                     foreach (var serviceType in serviceTypes)
                     {
-                        instance.RegisterType(serviceType, implType, life: serviceTypeConfig.Scope);
+                        instance.RegisterType(serviceType, implType, serviceName: serviceTypeConfig.ServiceName, life: serviceTypeConfig.Scope);
                     }
                 }
             }

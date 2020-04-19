@@ -10,6 +10,11 @@ namespace Larva.Autofac
     public static class AutofacModule
     {
         /// <summary>
+        /// 模块名
+        /// </summary>
+        public const string MODULE_NAME = "Larva.Autofac";
+
+        /// <summary>
         /// 使用Autofac
         /// </summary>
         /// <param name="manager"></param>
@@ -17,7 +22,9 @@ namespace Larva.Autofac
         /// <returns></returns>
         public static IModuleManager UseAutofac(this IModuleManager manager, bool canOverride = false)
         {
-            return manager.UseIoc(new AutofacContainer(), canOverride);
+            var moduleInstance = new AutofacContainer();
+            manager.Register(MODULE_NAME, moduleInstance, canOverride);
+            return manager.UseIoc(moduleInstance, canOverride);
         }
 
         /// <summary>
