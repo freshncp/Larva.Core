@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>Larva.Core</PackageId>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Description>Larva.Core infrastructure framework</Description>
+    <PackageTags>configuration ioc serialization</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Authors>Jerry Bai</Authors>
+    <PackageProjectUrl>https://github.com/freshncp/Larva.Core</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  
+</Project>

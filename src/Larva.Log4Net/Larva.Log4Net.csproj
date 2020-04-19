@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageId>Larva.Log4Net</PackageId>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Description>Log4Net adapter for Larva.Core</Description>
+    <PackageTags>logging log4net</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Authors>Jerry Bai</Authors>
+    <PackageProjectUrl>https://github.com/freshncp/Larva.Log4Net</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Larva.Core\Larva.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+  </ItemGroup>
+
+</Project>

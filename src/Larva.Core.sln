@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Core", "Larva.Core\Larva.Core.csproj", "{1557D777-EABB-4280-B88D-1FE794312224}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Autofac", "Larva.Autofac\Larva.Autofac.csproj", "{E9873074-25B3-494C-8208-CB244A184F2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Core.Tests", "Larva.Core.Tests\Larva.Core.Tests.csproj", "{F90763E8-6831-47CB-A211-6AB80118D649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Log4Net", "Larva.Log4Net\Larva.Log4Net.csproj", "{26F07B65-5C17-4985-8931-245B9096C0A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Log4Net.Tests", "Larva.Log4Net.Tests\Larva.Log4Net.Tests.csproj", "{1B25F6F6-75BC-47FA-B693-3EC313AA00E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larva.Autofac.Tests", "Larva.Autofac.Tests\Larva.Autofac.Tests.csproj", "{524F511F-31E9-422E-8491-5F7CC63F2B94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1557D777-EABB-4280-B88D-1FE794312224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1557D777-EABB-4280-B88D-1FE794312224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1557D777-EABB-4280-B88D-1FE794312224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1557D777-EABB-4280-B88D-1FE794312224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9873074-25B3-494C-8208-CB244A184F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9873074-25B3-494C-8208-CB244A184F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9873074-25B3-494C-8208-CB244A184F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9873074-25B3-494C-8208-CB244A184F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90763E8-6831-47CB-A211-6AB80118D649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90763E8-6831-47CB-A211-6AB80118D649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90763E8-6831-47CB-A211-6AB80118D649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90763E8-6831-47CB-A211-6AB80118D649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F07B65-5C17-4985-8931-245B9096C0A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F07B65-5C17-4985-8931-245B9096C0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F07B65-5C17-4985-8931-245B9096C0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F07B65-5C17-4985-8931-245B9096C0A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B25F6F6-75BC-47FA-B693-3EC313AA00E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B25F6F6-75BC-47FA-B693-3EC313AA00E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B25F6F6-75BC-47FA-B693-3EC313AA00E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B25F6F6-75BC-47FA-B693-3EC313AA00E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{524F511F-31E9-422E-8491-5F7CC63F2B94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
