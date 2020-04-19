@@ -81,14 +81,28 @@ MemoryConfigurationManager.Instance.SetSection(section1);
 ```csharp
 using Larva.Core.Ioc;
 
+public interface IUserRepository
+{
+    void AddUser(User user);
+}
+
+[Larva.Core.Ioc.IocService]
+public class UserRepository : IUserRepository
+{
+    public void AddUser(User user)
+    {
+        Console.WriteLine($"User {user.Name} added.");
+    }
+}
+
 Larva.Core.ModuleManager.Instance.UseIoc(<custom>);
 
-// 按程序集注册
+// 按程序集注册，需要在实现类上标记特性
 IocModule.RegisterByAssembly(<assembly>);
 // 注册完后，需要执行构建。
 IocModule.Instance.Build();
 
-// 解析，支持通过构造函数进行注入
+// 解析
 var userRepository = IocModule.Instance.Resolve<IUserRepository>();
 
 // 支持注册服务实例时替换
