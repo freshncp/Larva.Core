@@ -1,6 +1,8 @@
 # Larva.Core
 
-基础框架。包含一些常用模块，旨在为基于此框架之上的上层应用，提供一个抽象层，便于替换各个模块。
+基础框架，基于模块化管理。包含一些常用模块，旨在为基于此框架之上的上层应用，提供一个抽象层，便于替换各个模块。
+
+此框架，无任何nuget包依赖。
 
 核心模块接口：IModuleManager，通过对此接口添加扩展类，实现模块开发。
 
@@ -12,10 +14,15 @@
 
 - Larva.Core.Logging.LoggingModule
 
+- Larva.Core.Serialization.Binary.BinarySerializationModule
+
+- Larva.Core.Serialization.Json.JsonSerializationModule
+
+- Larva.Core.Serialization.Xml.XmlSerializationModule
 
 ## 模块介绍
 
-### Configuration模块
+### Configuration 模块
 
 应用配置配置，有配置块概念，配置块内部有独立配置列表，配置块之间是扁平关系。
 
@@ -56,7 +63,7 @@ section1.Set("key2", 1);
 MemoryConfigurationManager.Instance.SetSection(section1);
 ```
 
-### Ioc模块
+### Ioc 模块
 
 用于依赖注入。
 
@@ -64,7 +71,7 @@ MemoryConfigurationManager.Instance.SetSection(section1);
 Larva.Core.ModuleManager.Instance.UseIoc(<custom>);
 ```
 
-### Logging模块
+### Logging 模块
 
 已内置ConsoleLog、FileLog。
 
@@ -97,3 +104,15 @@ Larva.Core.ModuleManager.Instance.UseFileLog();
 - 文件命名：`<AssemblyName>`_`<yyyy-MM-dd>`.log
 
 - 按日期自动切换新日志文件
+
+### Serialization.Binary 模块
+
+二进制序列号模块，内置BinaryFormatter的封装。
+
+### Serialization.Json 模块
+
+Json序列号模块。
+
+### Serialization.Xml 模块
+
+Xml序列号模块。
