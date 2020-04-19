@@ -36,7 +36,19 @@ namespace Larva.Autofac
         /// <returns></returns>
         public static IModuleManager UseAutofac(this IModuleManager manager, AutofacContainerBuilder containerBuilder, bool canOverride = false)
         {
-            return manager.UseIoc(new AutofacContainer(containerBuilder), canOverride);
+            var moduleInstance = new AutofacContainer(containerBuilder);
+            manager.Register(MODULE_NAME, moduleInstance, canOverride);
+            return manager.UseIoc(moduleInstance, canOverride);
+        }
+
+        static AutofacModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static AutofacContainer Instance
+        {
+            get { return (AutofacContainer)ModuleManager.Instance.Get(MODULE_NAME); }
         }
     }
 }

@@ -6,9 +6,7 @@
 
 核心模块接口：IModuleManager，通过对此接口添加扩展类，实现模块开发。
 
-每个抽象模块，包含抽象接口、模块扩展类、代理，这3部分。
-
-每个模块，包含模块扩展类、代理，这2部分。
+每个抽象模块，包含抽象接口、模块扩展类；每个具体模块，包含模块扩展类；模块扩展类，额外定义模块名、模块实例。
 
 已定义的抽象模块：
 
@@ -45,10 +43,10 @@ using Larva.Core.Configuration;
 Larva.Core.ModuleManager.Instance.UseConfiguration(<custom>);
 
 // 按Key获取配置项
-ConfigurationProxy.Instance.Get("key1");
+ConfigurationModule.Instance.Get("key1");
 
 // 按SectionName获取配置块
-var section = ConfigurationProxy.Instance.GetSection("section1");
+var section = ConfigurationModule.Instance.GetSection("section1");
 // 按Key获取配置项
 section.Instance.Get("key1");
 ```
@@ -143,8 +141,8 @@ using Larva.Core.Serialization.Binary;
 
 Larva.Core.ModuleManager.Instance.UseBinaryFormatter(<custom>);
 var text1 = "This is a text.";
-var buffer = BinarySerializationProxy.Instance.Serialize(text1);
-var text2 = BinarySerializationProxy.Instance.Deserialize(typeof(string), buffer); 
+var buffer = BinarySerializationModule.Instance.Serialize(text1);
+var text2 = BinarySerializationModule.Instance.Deserialize(typeof(string), buffer); 
 ```
 
 ### Larva.Core.Serialization.Json 模块

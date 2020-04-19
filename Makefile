@@ -13,39 +13,54 @@ pack:
 test: test-core test-autofac test-log4net test-json
 
 test-core:
-	dotnet test `pwd`/src/Larva.Core.Tests/
+	dotnet test -c Release `pwd`/src/Larva.Core.Tests/
 
 test-autofac:
-	dotnet test `pwd`/src/Larva.Autofac.Tests/
+	dotnet test -c Release `pwd`/src/Larva.Autofac.Tests/
 
 test-log4net:
-	dotnet test `pwd`/src/Larva.Log4Net.Tests/
+	dotnet test -c Release `pwd`/src/Larva.Log4Net.Tests/
 
 test-json:
-	dotnet test `pwd`/src/Larva.NewtonsoftJson.Tests/
+	dotnet test -c Release `pwd`/src/Larva.NewtonsoftJson.Tests/
 
-rebuild: clear build
+rebuild: clear restore build
 
-build:
-	dotnet build -c Release -f 'netstandard2.0' `pwd`/src/Larva.Core/
-	dotnet build -c Release -f 'netstandard2.0' `pwd`/src/Larva.Autofac/
-	dotnet build -c Release -f 'netstandard2.0' `pwd`/src/Larva.Log4Net/
-	dotnet build -c Release -f 'netstandard2.0' `pwd`/src/Larva.NewtonsoftJson/
+build: 
+	dotnet build -c Release `pwd`/src/Larva.Core/
+	dotnet build -c Release `pwd`/src/Larva.Core.Tests/
+	dotnet build -c Release `pwd`/src/Larva.Autofac/
+	dotnet build -c Release `pwd`/src/Larva.Autofac.Tests/
+	dotnet build -c Release `pwd`/src/Larva.Log4Net/
+	dotnet build -c Release `pwd`/src/Larva.Log4Net.Tests/
+	dotnet build -c Release `pwd`/src/Larva.NewtonsoftJson/
+	dotnet build -c Release `pwd`/src/Larva.NewtonsoftJson.Tests/
+
+restore:
+	dotnet restore `pwd`/src/Larva.Core/
+	dotnet restore `pwd`/src/Larva.Core.Tests/
+	dotnet restore `pwd`/src/Larva.Autofac/
+	dotnet restore `pwd`/src/Larva.Autofac.Tests/
+	dotnet restore `pwd`/src/Larva.Log4Net/
+	dotnet restore `pwd`/src/Larva.Log4Net.Tests/
+	dotnet restore `pwd`/src/Larva.NewtonsoftJson/
+	dotnet restore `pwd`/src/Larva.NewtonsoftJson.Tests/
+	
 
 clear:
 	rm -rf `pwd`/src/Larva.Core/bin/*
 	rm -rf `pwd`/src/Larva.Core/obj/*
-	rm -rf `pwd`/src/Larva.Autofac/bin/*
-	rm -rf `pwd`/src/Larva.Autofac/obj/*
-	rm -rf `pwd`/src/Larva.Log4Net/bin/*
-	rm -rf `pwd`/src/Larva.Log4Net/obj/*
-	rm -rf `pwd`/src/Larva.Log4Net/bin/*
-	rm -rf `pwd`/src/Larva.Log4Net/obj/*
 	rm -rf `pwd`/src/Larva.Core.Tests/bin/*
 	rm -rf `pwd`/src/Larva.Core.Tests/obj/*
+	rm -rf `pwd`/src/Larva.Autofac/bin/*
+	rm -rf `pwd`/src/Larva.Autofac/obj/*
 	rm -rf `pwd`/src/Larva.Autofac.Tests/bin/*
 	rm -rf `pwd`/src/Larva.Autofac.Tests/obj/*
+	rm -rf `pwd`/src/Larva.Log4Net/bin/*
+	rm -rf `pwd`/src/Larva.Log4Net/obj/*
 	rm -rf `pwd`/src/Larva.Log4Net.Tests/bin/*
 	rm -rf `pwd`/src/Larva.Log4Net.Tests/obj/*
+	rm -rf `pwd`/src/Larva.NewtonsoftJson/bin/*
+	rm -rf `pwd`/src/Larva.NewtonsoftJson/obj/*
 	rm -rf `pwd`/src/Larva.NewtonsoftJson.Tests/bin/*
 	rm -rf `pwd`/src/Larva.NewtonsoftJson.Tests/obj/*

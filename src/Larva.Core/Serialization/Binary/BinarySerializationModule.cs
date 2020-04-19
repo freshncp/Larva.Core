@@ -43,5 +43,15 @@ namespace Larva.Core.Serialization.Binary
         {
             return (IBinarySerializer)manager.Get(MODULE_NAME);
         }
+
+        static BinarySerializationModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static IBinarySerializer Instance
+        {
+            get { return ModuleManager.Instance.GetBinarySerializer(); }
+        }
     }
 }

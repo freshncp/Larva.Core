@@ -11,7 +11,7 @@ namespace Larva.Log4Net.Tests
         public void TestLog()
         {
             ModuleManager.Instance.UseLog4Net(canOverride: true);
-            var logger = LoggingProxy.Instance.GetLogger(typeof(Log4NetTests));
+            var logger = LoggingModule.Instance.GetLogger(typeof(Log4NetTests));
             logger.Trace("just message");
             logger.Debug("just message");
             logger.Info("just message");

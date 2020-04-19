@@ -11,32 +11,32 @@ namespace Larva.Core.Ioc.Internals
 
         public bool IsRegistered(Type serviceType, string serviceName = null)
         {
-            return IocProxy.Instance.IsRegistered(serviceType, serviceName);
+            return IocModule.Instance.IsRegistered(serviceType, serviceName);
         }
 
         public bool IsRegistered<TService>(string serviceName = null) where TService : class
         {
-            return IocProxy.Instance.IsRegistered<TService>(serviceName);
+            return IocModule.Instance.IsRegistered<TService>(serviceName);
         }
 
         public object Resolve(Type serviceType)
         {
-            return IocProxy.Instance.Resolve(serviceType);
+            return IocModule.Instance.Resolve(serviceType);
         }
 
         public TService Resolve<TService>() where TService : class
         {
-            return IocProxy.Instance.Resolve<TService>();
+            return IocModule.Instance.Resolve<TService>();
         }
 
         public object ResolveNamed(string serviceName, Type serviceType)
         {
-            return IocProxy.Instance.ResolveNamed(serviceName, serviceType);
+            return IocModule.Instance.ResolveNamed(serviceName, serviceType);
         }
 
         public TService ResolveNamed<TService>(string serviceName) where TService : class
         {
-            return IocProxy.Instance.ResolveNamed<TService>(serviceName);
+            return IocModule.Instance.ResolveNamed<TService>(serviceName);
         }
     }
 }

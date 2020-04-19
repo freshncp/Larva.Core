@@ -25,5 +25,15 @@ namespace Larva.NewtonsoftJson
             manager.Register(MODULE_NAME, moduleInstance, canOverride);
             return manager.UseJsonSerialization(moduleInstance, canOverride);
         }
+
+        static NewtonsoftJsonModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static NewtonsoftJsonSerializer Instance
+        {
+            get { return (NewtonsoftJsonSerializer)ModuleManager.Instance.Get(MODULE_NAME); }
+        }
     }
 }

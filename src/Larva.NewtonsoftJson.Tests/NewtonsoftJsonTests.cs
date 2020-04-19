@@ -11,8 +11,8 @@ namespace Larva.NewtonsoftJson.Tests
         {
             ModuleManager.Instance.UseNewtonsoftJson(true);
             var text1 = "this is a text";
-            var buffer = JsonSerializationProxy.Instance.Serialize(text1);
-            var text2 = JsonSerializationProxy.Instance.Deserialize(typeof(string), buffer);
+            var buffer = JsonSerializationModule.Instance.Serialize(text1);
+            var text2 = JsonSerializationModule.Instance.Deserialize(typeof(string), buffer);
             Assert.Equal(text1, text2);
         }
     }

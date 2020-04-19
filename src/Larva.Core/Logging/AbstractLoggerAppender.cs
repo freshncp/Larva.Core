@@ -16,7 +16,7 @@ namespace Larva.Core.Logging
         /// <param name="exception"></param>
         public void Log(Type callerDeclaredType, LogLevel logLevel, object message, Exception exception)
         {
-            if ((byte)logLevel > (byte)LoggingProxy.Level) return;
+            if ((byte)logLevel > (byte)LoggingModule.Level) return;
             InternalLog(callerDeclaredType,logLevel, message, exception);
         }
 

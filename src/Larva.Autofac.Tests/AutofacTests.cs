@@ -13,12 +13,12 @@ namespace Larva.Autofac.Tests
         public void TestRegisterAgainWillOverrideLast()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>(life: LifetimeScope.Transient);
-            IocProxy.Instance.Register<INoticeService, EmailNoticeService>(life: LifetimeScope.Transient);
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>(life: LifetimeScope.Transient);
+            IocModule.Instance.Register<INoticeService, EmailNoticeService>(life: LifetimeScope.Transient);
+            IocModule.Instance.Build();
 
-            var noticeService1 = IocProxy.Instance.Resolve<INoticeService>();
-            var noticeService2 = IocProxy.Instance.Resolve<INoticeService>();
+            var noticeService1 = IocModule.Instance.Resolve<INoticeService>();
+            var noticeService2 = IocModule.Instance.Resolve<INoticeService>();
             Assert.Equal(typeof(EmailNoticeService), noticeService1.GetType());
             Assert.Equal(typeof(EmailNoticeService), noticeService2.GetType());
             Assert.NotEqual(noticeService1, noticeService2);
@@ -28,11 +28,11 @@ namespace Larva.Autofac.Tests
         public void TestRegisterWithTransient()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>(life: LifetimeScope.Transient);
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>(life: LifetimeScope.Transient);
+            IocModule.Instance.Build();
 
-            var noticeService1 = IocProxy.Instance.Resolve<INoticeService>();
-            var noticeService2 = IocProxy.Instance.Resolve<INoticeService>();
+            var noticeService1 = IocModule.Instance.Resolve<INoticeService>();
+            var noticeService2 = IocModule.Instance.Resolve<INoticeService>();
             Assert.Equal(typeof(SmsNoticeService), noticeService1.GetType());
             Assert.Equal(typeof(SmsNoticeService), noticeService2.GetType());
             Assert.NotEqual(noticeService1, noticeService2);
@@ -42,17 +42,17 @@ namespace Larva.Autofac.Tests
         public void TestRegisterByServiceNameWithTransient()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>(serviceName: "sms", life: LifetimeScope.Transient);
-            IocProxy.Instance.Register<INoticeService, EmailNoticeService>(serviceName: "email", life: LifetimeScope.Transient);
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>(serviceName: "sms", life: LifetimeScope.Transient);
+            IocModule.Instance.Register<INoticeService, EmailNoticeService>(serviceName: "email", life: LifetimeScope.Transient);
+            IocModule.Instance.Build();
 
-            var smsNoticeService1 = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
-            var smsNoticeService2 = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
+            var smsNoticeService1 = IocModule.Instance.ResolveNamed<INoticeService>("sms");
+            var smsNoticeService2 = IocModule.Instance.ResolveNamed<INoticeService>("sms");
             Assert.Equal(typeof(SmsNoticeService), smsNoticeService1.GetType());
             Assert.Equal(typeof(SmsNoticeService), smsNoticeService2.GetType());
             Assert.NotEqual(smsNoticeService1, smsNoticeService2);
-            var emailNoticeService1 = IocProxy.Instance.ResolveNamed<INoticeService>("email");
-            var emailNoticeService2 = IocProxy.Instance.ResolveNamed<INoticeService>("email");
+            var emailNoticeService1 = IocModule.Instance.ResolveNamed<INoticeService>("email");
+            var emailNoticeService2 = IocModule.Instance.ResolveNamed<INoticeService>("email");
             Assert.Equal(typeof(EmailNoticeService), emailNoticeService1.GetType());
             Assert.Equal(typeof(EmailNoticeService), emailNoticeService2.GetType());
             Assert.NotEqual(emailNoticeService1, emailNoticeService2);
@@ -62,11 +62,11 @@ namespace Larva.Autofac.Tests
         public void TestRegisterWithSingleton()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>(life: LifetimeScope.Singleton);
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>(life: LifetimeScope.Singleton);
+            IocModule.Instance.Build();
 
-            var noticeService1 = IocProxy.Instance.Resolve<INoticeService>();
-            var noticeService2 = IocProxy.Instance.Resolve<INoticeService>();
+            var noticeService1 = IocModule.Instance.Resolve<INoticeService>();
+            var noticeService2 = IocModule.Instance.Resolve<INoticeService>();
             Assert.Equal(typeof(SmsNoticeService), noticeService1.GetType());
             Assert.Equal(typeof(SmsNoticeService), noticeService2.GetType());
             Assert.Equal(noticeService1, noticeService2);
@@ -76,17 +76,17 @@ namespace Larva.Autofac.Tests
         public void TestRegisterByServiceNameWithSingleton()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>(serviceName: "sms", life: LifetimeScope.Singleton);
-            IocProxy.Instance.Register<INoticeService, EmailNoticeService>(serviceName: "email", life: LifetimeScope.Singleton);
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>(serviceName: "sms", life: LifetimeScope.Singleton);
+            IocModule.Instance.Register<INoticeService, EmailNoticeService>(serviceName: "email", life: LifetimeScope.Singleton);
+            IocModule.Instance.Build();
 
-            var smsNoticeService1 = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
-            var smsNoticeService2 = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
+            var smsNoticeService1 = IocModule.Instance.ResolveNamed<INoticeService>("sms");
+            var smsNoticeService2 = IocModule.Instance.ResolveNamed<INoticeService>("sms");
             Assert.Equal(typeof(SmsNoticeService), smsNoticeService1.GetType());
             Assert.Equal(typeof(SmsNoticeService), smsNoticeService2.GetType());
             Assert.Equal(smsNoticeService1, smsNoticeService2);
-            var emailNoticeService1 = IocProxy.Instance.ResolveNamed<INoticeService>("email");
-            var emailNoticeService2 = IocProxy.Instance.ResolveNamed<INoticeService>("email");
+            var emailNoticeService1 = IocModule.Instance.ResolveNamed<INoticeService>("email");
+            var emailNoticeService2 = IocModule.Instance.ResolveNamed<INoticeService>("email");
             Assert.Equal(typeof(EmailNoticeService), emailNoticeService1.GetType());
             Assert.Equal(typeof(EmailNoticeService), emailNoticeService2.GetType());
             Assert.Equal(emailNoticeService1, emailNoticeService2);
@@ -96,11 +96,11 @@ namespace Larva.Autofac.Tests
         public void TestRegisterType()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.RegisterType(typeof(SmsNoticeService), life: LifetimeScope.Singleton);
-            IocProxy.Instance.Build();
+            IocModule.Instance.RegisterType(typeof(SmsNoticeService), life: LifetimeScope.Singleton);
+            IocModule.Instance.Build();
 
-            var noticeService1 = IocProxy.Instance.Resolve<SmsNoticeService>();
-            var noticeService2 = IocProxy.Instance.Resolve<SmsNoticeService>();
+            var noticeService1 = IocModule.Instance.Resolve<SmsNoticeService>();
+            var noticeService2 = IocModule.Instance.Resolve<SmsNoticeService>();
             Assert.Equal(typeof(SmsNoticeService), noticeService1.GetType());
             Assert.Equal(typeof(SmsNoticeService), noticeService2.GetType());
             Assert.Equal(noticeService1, noticeService2);
@@ -110,11 +110,11 @@ namespace Larva.Autofac.Tests
         public void TestRegisterTypeByServiceType()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.RegisterType(typeof(INoticeService), typeof(SmsNoticeService), life: LifetimeScope.Singleton);
-            IocProxy.Instance.Build();
+            IocModule.Instance.RegisterType(typeof(INoticeService), typeof(SmsNoticeService), life: LifetimeScope.Singleton);
+            IocModule.Instance.Build();
 
-            var noticeService1 = IocProxy.Instance.Resolve<INoticeService>();
-            var noticeService2 = IocProxy.Instance.Resolve<INoticeService>();
+            var noticeService1 = IocModule.Instance.Resolve<INoticeService>();
+            var noticeService2 = IocModule.Instance.Resolve<INoticeService>();
             Assert.Equal(typeof(SmsNoticeService), noticeService1.GetType());
             Assert.Equal(typeof(SmsNoticeService), noticeService2.GetType());
             Assert.Equal(noticeService1, noticeService2);
@@ -125,10 +125,10 @@ namespace Larva.Autofac.Tests
         {
             var noticeService1 = new SmsNoticeService();
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.RegisterInstance<INoticeService>(noticeService1);
-            IocProxy.Instance.Build();
+            IocModule.Instance.RegisterInstance<INoticeService>(noticeService1);
+            IocModule.Instance.Build();
 
-            var noticeService2 = IocProxy.Instance.Resolve<INoticeService>();
+            var noticeService2 = IocModule.Instance.Resolve<INoticeService>();
             Assert.Equal(noticeService1, noticeService2);
         }
 
@@ -137,10 +137,10 @@ namespace Larva.Autofac.Tests
         {
             var noticeService1 = new SmsNoticeService();
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.RegisterInstance<INoticeService>(noticeService1, serviceName: "sms");
-            IocProxy.Instance.Build();
+            IocModule.Instance.RegisterInstance<INoticeService>(noticeService1, serviceName: "sms");
+            IocModule.Instance.Build();
 
-            var noticeService2 = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
+            var noticeService2 = IocModule.Instance.ResolveNamed<INoticeService>("sms");
             Assert.Equal(noticeService1, noticeService2);
         }
 
@@ -148,10 +148,10 @@ namespace Larva.Autofac.Tests
         public void TestIsRegistered()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.RegisterType(typeof(SmsNoticeService), life: LifetimeScope.Singleton);
-            IocProxy.Instance.Build();
+            IocModule.Instance.RegisterType(typeof(SmsNoticeService), life: LifetimeScope.Singleton);
+            IocModule.Instance.Build();
 
-            var isRegistered = IocProxy.Instance.IsRegistered<SmsNoticeService>();
+            var isRegistered = IocModule.Instance.IsRegistered<SmsNoticeService>();
             Assert.True(isRegistered);
         }
 
@@ -159,11 +159,11 @@ namespace Larva.Autofac.Tests
         public void TestIsRegisteredWithServiceName()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>(serviceName: "sms", life: LifetimeScope.Singleton);
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>(serviceName: "sms", life: LifetimeScope.Singleton);
+            IocModule.Instance.Build();
 
-            var isRegistered1 = IocProxy.Instance.IsRegistered<INoticeService>(serviceName: "sms");
-            var isRegistered2 = IocProxy.Instance.IsRegistered<INoticeService>(serviceName: "email");
+            var isRegistered1 = IocModule.Instance.IsRegistered<INoticeService>(serviceName: "sms");
+            var isRegistered2 = IocModule.Instance.IsRegistered<INoticeService>(serviceName: "email");
             Assert.True(isRegistered1);
             Assert.False(isRegistered2);
         }
@@ -172,10 +172,10 @@ namespace Larva.Autofac.Tests
         public void TestRegisterByAssembly()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.RegisterByAssembly(Assembly.GetExecutingAssembly());
-            IocProxy.Instance.Build();
+            IocModule.RegisterByAssembly(Assembly.GetExecutingAssembly());
+            IocModule.Instance.Build();
 
-            var userApplication = IocProxy.Instance.Resolve<IUserApplicationService>();
+            var userApplication = IocModule.Instance.Resolve<IUserApplicationService>();
             userApplication.CreateUser(new User { Name = "Jerry Bai" });
         }
 
@@ -183,17 +183,17 @@ namespace Larva.Autofac.Tests
         public void TestReplaceWhenServiceInstanceRegistering()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.OnServiceInstanceRegistering += (sender, e) =>
+            IocModule.Instance.OnServiceInstanceRegistering += (sender, e) =>
             {
                 if (e.ServiceName == "sms" && e.ServiceType == typeof(INoticeService))
                 {
                     e.SetNewInstance(new EmailNoticeService());
                 }
             };
-            IocProxy.Instance.RegisterInstance<INoticeService>(new SmsNoticeService(), "sms");
-            IocProxy.Instance.Build();
+            IocModule.Instance.RegisterInstance<INoticeService>(new SmsNoticeService(), "sms");
+            IocModule.Instance.Build();
 
-            var noticeService = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
+            var noticeService = IocModule.Instance.ResolveNamed<INoticeService>("sms");
             Assert.Equal(typeof(EmailNoticeService), noticeService.GetType());
         }
 
@@ -201,17 +201,17 @@ namespace Larva.Autofac.Tests
         public void TestReplaceServiceTypeRegistering()
         {
             ModuleManager.Instance.UseAutofac(canOverride: true);
-            IocProxy.Instance.OnServiceTypeRegistering += (sender, e) =>
+            IocModule.Instance.OnServiceTypeRegistering += (sender, e) =>
             {
                 if (e.ServiceName == "sms" && e.ServiceType == typeof(INoticeService))
                 {
                     e.SetNewImplementationType(typeof(EmailNoticeService));
                 }
             };
-            IocProxy.Instance.Register<INoticeService, SmsNoticeService>("sms");
-            IocProxy.Instance.Build();
+            IocModule.Instance.Register<INoticeService, SmsNoticeService>("sms");
+            IocModule.Instance.Build();
 
-            var noticeService = IocProxy.Instance.ResolveNamed<INoticeService>("sms");
+            var noticeService = IocModule.Instance.ResolveNamed<INoticeService>("sms");
             Assert.Equal(typeof(EmailNoticeService), noticeService.GetType());
         }
     }

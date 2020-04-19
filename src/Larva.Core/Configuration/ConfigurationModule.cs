@@ -43,5 +43,15 @@ namespace Larva.Core.Configuration
         {
             return (IConfigurationManager)manager.Get(MODULE_NAME);
         }
+
+        static ConfigurationModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static IConfigurationManager Instance
+        {
+            get { return ModuleManager.Instance.GetConfigurationManager(); }
+        }
     }
 }

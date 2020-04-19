@@ -22,7 +22,7 @@ namespace Larva.Core.Serialization.Xml
             manager.Register(MODULE_NAME, serializer, canOverride);
             return manager;
         }
-        
+
         /// <summary>
         /// 获取Xml序列化
         /// </summary>
@@ -31,6 +31,16 @@ namespace Larva.Core.Serialization.Xml
         public static IXmlSerializer GetXmlSerializer(this IModuleManager manager)
         {
             return (IXmlSerializer)manager.Get(MODULE_NAME);
+        }
+
+        static XmlSerializationModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static IXmlSerializer Instance
+        {
+            get { return ModuleManager.Instance.GetXmlSerializer(); }
         }
     }
 }

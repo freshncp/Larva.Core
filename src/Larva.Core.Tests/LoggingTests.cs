@@ -10,7 +10,7 @@ namespace Larva.Core.Tests
         public void TestConsoleLog()
         {
             ModuleManager.Instance.UseConsoleLog(canOverride: true);
-            var logger = LoggingProxy.Instance.GetLogger(typeof(LoggingTests), disableCache: false);
+            var logger = LoggingModule.Instance.GetLogger(typeof(LoggingTests), disableCache: false);
             logger.Trace("just message");
             logger.Debug("just message");
             logger.Info("just message");
@@ -36,7 +36,7 @@ namespace Larva.Core.Tests
         public void TestFileLog()
         {
             ModuleManager.Instance.UseFileLog(canOverride: true);
-            var logger = LoggingProxy.Instance.GetLogger(typeof(LoggingTests), disableCache: true);
+            var logger = LoggingModule.Instance.GetLogger(typeof(LoggingTests), disableCache: true);
             try
             {
                 throw new Exception("Test log ex");

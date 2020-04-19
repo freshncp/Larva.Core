@@ -15,7 +15,7 @@ namespace Larva.Core.Tests
             MemoryConfigurationManager.Instance.Set("key1", "value1", true);
             MemoryConfigurationManager.Instance.Set("key1", "value2", false);
 
-            Assert.Equal("value1", ConfigurationProxy.Instance.Get("key1"));
+            Assert.Equal("value1", ConfigurationModule.Instance.Get("key1"));
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace Larva.Core.Tests
             MemoryConfigurationManager.Instance.Set("key1", "value1", true);
             MemoryConfigurationManager.Instance.Set("key1", "value2", true);
 
-            Assert.Equal("value2", ConfigurationProxy.Instance.Get("key1"));
+            Assert.Equal("value2", ConfigurationModule.Instance.Get("key1"));
         }
 
         [Fact]
@@ -43,7 +43,7 @@ namespace Larva.Core.Tests
             MemoryConfigurationManager.Instance.SetSection(section1, true);
             MemoryConfigurationManager.Instance.SetSection(section2, false);
 
-            Assert.Equal(section1, ConfigurationProxy.Instance.GetSection("section1"));
+            Assert.Equal(section1, ConfigurationModule.Instance.GetSection("section1"));
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Larva.Core.Tests
             MemoryConfigurationManager.Instance.SetSection(section1, true);
             MemoryConfigurationManager.Instance.SetSection(section2, true);
 
-            Assert.Equal(section2, ConfigurationProxy.Instance.GetSection("section1"));
+            Assert.Equal(section2, ConfigurationModule.Instance.GetSection("section1"));
         }
 
         [Fact]

@@ -32,5 +32,15 @@ namespace Larva.Core.Serialization.Json
         {
             return (IJsonSerializer)manager.Get(MODULE_NAME);
         }
+
+        static JsonSerializationModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static IJsonSerializer Instance
+        {
+            get { return ModuleManager.Instance.GetJsonSerializer(); }
+        }
     }
 }

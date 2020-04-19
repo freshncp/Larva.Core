@@ -26,5 +26,15 @@ namespace Larva.Log4Net
             manager.Register(MODULE_NAME, moduleInstance, canOverride);
             return manager.UseLogging(moduleInstance, canOverride);
         }
+
+        static Log4NetModule() { }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static Log4NetLoggerFactory Instance
+        {
+            get { return (Log4NetLoggerFactory)ModuleManager.Instance.Get(MODULE_NAME); }
+        }
     }
 }

@@ -36,6 +36,10 @@ namespace Larva.Core
         {
             object result = null;
             _configData.TryGetValue(moduleName, out result);
+            if (result == null)
+            {
+                throw new ModuleNotFoundException($"Module {moduleName} not found. Please use ModuleManager to register.");
+            }
             return result;
         }
 

@@ -58,5 +58,26 @@ namespace Larva.Core.Logging
         {
             return (ILoggerFactory)manager.Get(MODULE_NAME);
         }
+
+        static LoggingModule()
+        {
+            Level = LogLevel.Trace;
+        }
+
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static ILoggerFactory Instance
+        {
+            get
+            {
+                return ModuleManager.Instance.GetLoggerFactory();
+            }
+        }
+
+        /// <summary>
+        /// 日志级别（默认：Trace）
+        /// </summary>
+        public static LogLevel Level { get; set; }
     }
 }
