@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 
 namespace Larva.Core.Configuration.MemoryConfig
@@ -7,12 +8,12 @@ namespace Larva.Core.Configuration.MemoryConfig
     /// </summary>
     public sealed class MemoryConfigurationManager : IConfigurationManager
     {
-        private ConcurrentDictionary<string, MemorySectionConfig> _configData = new ConcurrentDictionary<string, MemorySectionConfig>();
+        private ConcurrentDictionary<string, Tuple<MemorySectionConfig, bool>> _configData = new ConcurrentDictionary<string, Tuple<MemorySectionConfig, bool>>();
         private static readonly MemoryConfigurationManager _instance = new MemoryConfigurationManager();
 
         private MemoryConfigurationManager()
         {
-            _configData.TryAdd(SectionName, new MemorySectionConfig(SectionName));
+            _configData.TryAdd(SectionName, new Tuple<MemorySectionConfig, bool>(new MemorySectionConfig(SectionName), false));
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Larva.Core.Configuration.MemoryConfig
         public object Get(string key)
         {
             var section = _configData[SectionName];
-            return section == null ? null : section.Get(key);
+            return section == null ? null : section.Item1.Get(key);
         }
 
         /// <summary>
@@ -46,8 +47,8 @@ namespace Larva.Core.Configuration.MemoryConfig
         /// <returns></returns>
         public ISectionConfig GetSection(string sectionName)
         {
-            _configData.TryGetValue(sectionName, out MemorySectionConfig result);
-            return result;
+            _configData.TryGetValue(sectionName, out Tuple<MemorySectionConfig, bool> result);
+            return result == null ? null : result.Item1;
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace Larva.Core.Configuration.MemoryConfig
         /// <param name="canOverride"></param>
         public void Set(string key, object value, bool canOverride)
         {
-            _configData[SectionName].Set(key, value, canOverride);
+            _configData[SectionName].Item1.Set(key, value, canOverride);
         }
 
         /// <summary>
@@ -68,15 +69,16 @@ namespace Larva.Core.Configuration.MemoryConfig
         /// <param name="canOverride"></param>
         public void SetSection(MemorySectionConfig section, bool canOverride)
         {
-            if (section == null) return;
-            if (canOverride)
+            if (section == null)
             {
-                _configData.AddOrUpdate(section.SectionName, section, (sectionName, originSection) => section);
+                throw new ArgumentNullException(nameof(section));
             }
-            else
+            if (string.IsNullOrEmpty(section.SectionName))
             {
-                _configData.TryAdd(section.SectionName, section);
+                throw new ArgumentException("section.SectionName must not empty.", nameof(section));
             }
+            var addValue = new Tuple<MemorySectionConfig, bool>(section, canOverride);
+            _configData.AddOrUpdate(section.SectionName, addValue, (k, v) => v.Item2 ? addValue : v);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 
@@ -8,21 +9,31 @@ namespace Larva.Core.Configuration.MemoryConfig
     /// </summary>
     public class MemorySectionConfig : ISectionConfig
     {
-        private ConcurrentDictionary<string, object> _configData = new ConcurrentDictionary<string, object>();
+        private ConcurrentDictionary<string, Tuple<object, bool>> _configData = new ConcurrentDictionary<string, Tuple<object, bool>>();
 
         /// <summary>
         /// 块配置
         /// </summary>
         /// <param name="sectionName"></param>
+        public MemorySectionConfig(string sectionName)
+        {
+            SectionName = sectionName;
+        }
+
+        /// <summary>
+        /// 块配置
+        /// </summary>
+        /// <param name="sectionName"></param>
+        /// <param name="canOverride"></param>
         /// <param name="dict"></param>
-        public MemorySectionConfig(string sectionName, IDictionary<string, object> dict = null)
+        public MemorySectionConfig(string sectionName, bool canOverride, IDictionary<string, object> dict)
         {
             SectionName = sectionName;
             if (dict != null)
             {
                 foreach (var item in dict)
                 {
-                    _configData.TryAdd(item.Key, item.Value);
+                    _configData.TryAdd(item.Key, new Tuple<object, bool>(item.Value, canOverride));
                 }
             }
         }
@@ -39,9 +50,8 @@ namespace Larva.Core.Configuration.MemoryConfig
         /// <returns></returns>
         public object Get(string key)
         {
-            object result = null;
-            _configData.TryGetValue(key, out result);
-            return result;
+            _configData.TryGetValue(key, out Tuple<object, bool> result);
+            return result == null ? null : result.Item1;
         }
 
         /// <summary>
@@ -52,15 +62,11 @@ namespace Larva.Core.Configuration.MemoryConfig
         /// <param name="canOverride"></param>
         public void Set(string key, object value, bool canOverride)
         {
-            if (canOverride)
+            if (string.IsNullOrEmpty(key))
             {
-                _configData.AddOrUpdate(key, value, (k, v) => value);
+                throw new ArgumentNullException(nameof(key));
             }
-            else
-            {
-                _configData.TryAdd(key, value);
-            }
+            _configData.AddOrUpdate(key, new Tuple<object, bool>(value, canOverride), (k, v) => v.Item2 ? new Tuple<object, bool>(value, canOverride) : v);
         }
-
     }
 }

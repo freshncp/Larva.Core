@@ -7,7 +7,7 @@ namespace Larva.Core.Tests
         [Fact]
         public void TestRegisterWithNotOverride()
         {
-            ModuleManager.Instance.Register("key1", "value1", true);
+            ModuleManager.Instance.Register("key1", "value1", false);
             ModuleManager.Instance.Register("key1", "value2", false);
 
             Assert.Equal("value1", ModuleManager.Instance.Get("key1"));
@@ -16,10 +16,10 @@ namespace Larva.Core.Tests
         [Fact]
         public void TestRegisterWithOverride()
         {
-            ModuleManager.Instance.Register("key1", "value1", true);
-            ModuleManager.Instance.Register("key1", "value2", true);
+            ModuleManager.Instance.Register("key2", "value1", true);
+            ModuleManager.Instance.Register("key2", "value2", true);
 
-            Assert.Equal("value2", ModuleManager.Instance.Get("key1"));
+            Assert.Equal("value2", ModuleManager.Instance.Get("key2"));
         }
     }
 }

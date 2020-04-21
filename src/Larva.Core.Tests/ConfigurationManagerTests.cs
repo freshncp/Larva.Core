@@ -12,7 +12,7 @@ namespace Larva.Core.Tests
         public void TestMemoryConfigSetWithNotOverride()
         {
             ModuleManager.Instance.UseMemoryConfiguration(canOverride: true);
-            MemoryConfigurationManager.Instance.Set("key1", "value1", true);
+            MemoryConfigurationManager.Instance.Set("key1", "value1", false);
             MemoryConfigurationManager.Instance.Set("key1", "value2", false);
 
             Assert.Equal("value1", ConfigurationModule.Instance.Get("key1"));
@@ -22,25 +22,25 @@ namespace Larva.Core.Tests
         public void TestMemoryConfigSetWithOverride()
         {
             ModuleManager.Instance.UseMemoryConfiguration(canOverride: true);
-            MemoryConfigurationManager.Instance.Set("key1", "value1", true);
-            MemoryConfigurationManager.Instance.Set("key1", "value2", true);
+            MemoryConfigurationManager.Instance.Set("key2", "value1", true);
+            MemoryConfigurationManager.Instance.Set("key2", "value2", true);
 
-            Assert.Equal("value2", ConfigurationModule.Instance.Get("key1"));
+            Assert.Equal("value2", ConfigurationModule.Instance.Get("key2"));
         }
 
         [Fact]
         public void TestMemoryConfigSetSectionWithNotOverride()
         {
             ModuleManager.Instance.UseMemoryConfiguration(canOverride: true);
-            var section1 = new MemorySectionConfig("section1", new Dictionary<string,object>
+            var section1 = new MemorySectionConfig("section1", false, new Dictionary<string,object>
             {
                 {"key1", "value1"},
             });
-            var section2 = new MemorySectionConfig("section1", new Dictionary<string,object>
+            var section2 = new MemorySectionConfig("section1", false, new Dictionary<string,object>
             {
                 {"key1", "value2"},
             });
-            MemoryConfigurationManager.Instance.SetSection(section1, true);
+            MemoryConfigurationManager.Instance.SetSection(section1, false);
             MemoryConfigurationManager.Instance.SetSection(section2, false);
 
             Assert.Equal(section1, ConfigurationModule.Instance.GetSection("section1"));
@@ -50,25 +50,25 @@ namespace Larva.Core.Tests
         public void TestMemoryConfigSetSectionWithOverride()
         {
             ModuleManager.Instance.UseMemoryConfiguration(canOverride: true);
-            var section1 = new MemorySectionConfig("section1", new Dictionary<string,object>
+            var section1 = new MemorySectionConfig("section2", false, new Dictionary<string,object>
             {
                 {"key1", "value1"},
             });
-            var section2 = new MemorySectionConfig("section1", new Dictionary<string,object>
+            var section2 = new MemorySectionConfig("section2", false, new Dictionary<string,object>
             {
                 {"key1", "value2"},
             });
             MemoryConfigurationManager.Instance.SetSection(section1, true);
             MemoryConfigurationManager.Instance.SetSection(section2, true);
 
-            Assert.Equal(section2, ConfigurationModule.Instance.GetSection("section1"));
+            Assert.Equal(section2, ConfigurationModule.Instance.GetSection("section2"));
         }
 
         [Fact]
         public void TestMemorySectionConfigSetWithNotOverride()
         {
             var section1 = new MemorySectionConfig("section1");
-            section1.Set("key1", "value1", true);
+            section1.Set("key1", "value1", false);
             section1.Set("key1", "value2", false);
 
             Assert.Equal("value1", section1.Get("key1"));

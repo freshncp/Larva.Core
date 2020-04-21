@@ -1,6 +1,7 @@
 all: rebuild pack
 
 pack:
+	mkdir -p `pwd`/packages
 	dotnet pack -c Release `pwd`/src/Larva.Core/
 	mv `pwd`/src/Larva.Core/bin/Release/*.nupkg `pwd`/packages/
 	dotnet pack -c Release `pwd`/src/Larva.Autofac/

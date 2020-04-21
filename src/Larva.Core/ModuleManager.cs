@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 
 namespace Larva.Core
@@ -8,7 +9,7 @@ namespace Larva.Core
     public class ModuleManager : IModuleManager
     {
         private static readonly IModuleManager _instance = new ModuleManager();
-        private ConcurrentDictionary<string, object> _configData = new ConcurrentDictionary<string, object>();
+        private ConcurrentDictionary<string, Tuple<object, bool>> _configData = new ConcurrentDictionary<string, Tuple<object, bool>>();
 
         private ModuleManager() { }
 
@@ -22,25 +23,25 @@ namespace Larva.Core
 
         void IModuleManager.Register(string moduleName, object value, bool canOverride)
         {
-            if (canOverride)
+            if (string.IsNullOrEmpty(moduleName))
             {
-                _configData.AddOrUpdate(moduleName, value, (k, v) => value);
+                throw new ArgumentNullException(nameof(moduleName));
             }
-            else
+            if (value == null)
             {
-                _configData.TryAdd(moduleName, value);
+                throw new ArgumentNullException(nameof(value));
             }
+            _configData.AddOrUpdate(moduleName, new Tuple<object, bool>(value, canOverride), (m, v) => v.Item2 ? new Tuple<object, bool>(value, canOverride) : v);
         }
 
         object IModuleManager.Get(string moduleName)
         {
-            object result = null;
-            _configData.TryGetValue(moduleName, out result);
+            _configData.TryGetValue(moduleName, out Tuple<object, bool> result);
             if (result == null)
             {
                 throw new ModuleNotFoundException($"Module {moduleName} not found. Please use ModuleManager to register.");
             }
-            return result;
+            return result.Item1;
         }
 
         bool IModuleManager.IsRegistered(string moduleName)
